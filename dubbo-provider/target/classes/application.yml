@@ -1,0 +1,34 @@
+server:
+  port: 8087
+
+dubbo:
+  application:
+    # 这个 name 作为提供者展示（在 dubbo-admin 可视化界面看到的提供者名称就是这个）
+    name: dubbo-springboot-provider
+  # 应用所属者
+  owner: ydy wuhu
+  # 应用所属组织
+  organization: ydy wuhu
+  registry:
+    id: zookeeper-registry
+    # 注册中心协议
+    protocol: zookeeper
+    # 注册中心地址 此处采用本地 zk 注册，服务器的话写对应 ip 地址
+    address: zookeeper://127.0.0.1:2181
+
+  # dubbo协议在20880端口暴露服务
+  # 协议名称
+  protocol:
+    name: dubbo
+    # 协议端口
+    port: 20880
+    # 协议访问log
+    accesslog: dubbo-access.log
+  # 重试次数
+  provider:
+    retries: 0
+    # 超时时间
+    timeout: 3000
+  # 注册监控中心
+  monitor:
+    protocol: registry
